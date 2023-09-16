@@ -27,7 +27,6 @@
           </div>
         </div>
       </div>
-
       <div class="list-task row">
         <CardItem
           v-for="(task, i) in resultQuery"
@@ -35,6 +34,52 @@
           :task="task"
           :is-grid="isGrid"
         />
+      </div>
+      <div class="action py-2">
+        <a
+          v-if="!isCreating"
+          href="#"
+          class="add-button"
+          @click="isCreating = !isCreating"
+          >Add Task</a
+        >
+        <div v-else class="add-card">
+          <form @submit.prevent="handleSubmit">
+            <div class="form-group">
+              <label for="title">Judul</label>
+              <input
+                id="title"
+                v-model="form.title"
+                type="text"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="kategori">Kategori</label>
+              <select
+                id="kategori"
+                v-model="form.category"
+                class="form-control"
+              >
+                <option value="">Pilih Kategori</option>
+                <option value="Kategori 1">Kategori 1</option>
+                <option value="Kategori 2">Kategori 2</option>
+                <option value="Kategori 3">Kategori 3</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="deskripsi">Deskripsi</label>
+              <textarea
+                id="deskripsi"
+                v-model="form.description"
+                class="form-control"
+                rows="3"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Submit</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -70,6 +115,18 @@ export default {
           isDone: false,
         },
       ],
+      form: {
+        title: '',
+        category: '',
+        description: '',
+        isDone: false,
+      },
+      emtpyForm: {
+        title: '',
+        category: '',
+        description: '',
+        isDone: false,
+      },
       searchQuery: '',
       isCreating: false,
       isGrid: false,
@@ -87,6 +144,12 @@ export default {
       } else {
         return this.tasks
       }
+    },
+  },
+  methods: {
+    handleSubmit() {
+      this.tasks.push(this.form)
+      this.form = this.emtpyForm
     },
   },
 }
