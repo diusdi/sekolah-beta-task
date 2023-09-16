@@ -8,7 +8,7 @@
         <div class="d-flex align-items-center ms-auto">
           <select
             v-model="searchQuery"
-            class="form-select"
+            class="form-select mx-3"
             aria-label="Default select example"
           >
             <option value="">Pilih Kategori</option>
@@ -16,10 +16,10 @@
             <option value="2">Kategori 2</option>
             <option value="3">Kategori 3</option>
           </select>
-          <div class="d-flex align-center justify-content-end w-100">
-            <span class="me-2">View As</span>
+          <div class="d-flex align-items-center justify-content-end w-100">
+            <span class="mx-1">view as</span>
             <button
-              class="btn btn-outline-secondary py-1 px-3"
+              class="btn btn-outline-secondary py-1 px-2"
               @click="isGrid = !isGrid"
             >
               {{ isGrid ? 'Grid' : 'List' }}
