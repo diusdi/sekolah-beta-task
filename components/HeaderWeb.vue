@@ -25,6 +25,11 @@
               >Todo
             </nuxt-link>
           </li>
+          <li class="nav-item">
+            <nuxt-link class="nav-link active" aria-current="page" to="/article"
+              >Article
+            </nuxt-link>
+          </li>
         </ul>
       </div>
     </div>
